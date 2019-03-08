@@ -10,74 +10,15 @@ export class ProductService {
 
   constructor(private dataService: DataService<ProductDetail>) { }
 
-  public getAllCategories(): Array<Category>{
-    let categories = new Array<Category>();
-    categories = [
-      { 
-        id: 1, 
-        name: 'category1', 
-        subCategories: new Array<Category>(
-        {
-          id: 4, 
-          name: 'category11', 
-          subCategories: new Array<Category>(
-            {
-              id: 8, 
-              name: 'category111', 
-              subCategories: null
-            },
-            {
-              id: 9, 
-              name: 'category112', 
-              subCategories: null
-            }
-          )
-        },
-        {
-          id: 5, 
-          name: 'category11', 
-          subCategories: new Array<Category>(
-            {
-              id: 10, 
-              name: 'category111', 
-              subCategories: null
-            }
-          )
-        },
-        { 
-          id: 2, 
-          name: 'category1', 
-          subCategories: new Array<Category>(
-          {
-            id: 6, 
-            name: 'category11', 
-            subCategories: new Array<Category>(
-              {
-                id: 11, 
-                name: 'category111', 
-                subCategories: null
-              },
-              {
-                id: 12, 
-                name: 'category112', 
-                subCategories: null
-              }
-            )
-          },
-          {
-            id: 7, 
-            name: 'category11', 
-            subCategories: new Array<Category>(
-              {
-                id: 13, 
-                name: 'category111', 
-                subCategories: null
-              }
-            )
-          })
-        }
-        )}
-      ];
-    return categories;
+  public getById(id: number): ProductDetail {
+    return { 
+      id: 1, 
+      name: 'Samsung tv t501', 
+      description: 'this is a description', 
+      categoryId: 10, 
+      category: 'tv', 
+      price: 380,
+      publicationDate: new Date(2017, 5, 17)};
     }
+
 }

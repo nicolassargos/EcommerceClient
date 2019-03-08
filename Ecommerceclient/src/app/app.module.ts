@@ -13,6 +13,7 @@ import { DataService } from './services/data.service';
 import { ProductService } from './services/product.service';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
+import { SearchProductsComponent } from './components/search-products/search-products.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { HttpClientModule } from '@angular/common/http';
     HomeComponent,
     ProductDetailComponent,
     NavbarComponent,
-    ProductDropdownItemComponent
+    ProductDropdownItemComponent,
+    SearchProductsComponent
   ],
   imports: [
     CommonModule,
@@ -31,6 +33,8 @@ import { HttpClientModule } from '@angular/common/http';
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: 'home', component: HomeComponent, data: { title: 'Home' } },
+      { path: 'products/:id', component: ProductDetailComponent, data: { title: 'Product detail' } },
+      { path: 'products/:query', component: SearchProductsComponent, data: { title: 'Search a product' } }
     ]),
   ],
   providers: [

@@ -9,6 +9,9 @@
       <li class="nav-item active">
         <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
       </li>
+      <li class="nav-item active">
+          <a class="nav-link" href="./product/1">Product <span class="sr-only">(current)</span></a>
+        </li>      
       <li class="nav-item dropdown">
           <div class="btn-group" dropdown [autoClose]="false" container="body">
               <button id="button-nested" dropdownToggle type="button" class="btn btn-primary dropdown-toggle"
@@ -21,8 +24,8 @@
           </div>
       </li>
     </ul>
-    <form class="form-inline my-2 my-md-0">
-      <input class="form-control" type="text" placeholder="Search">
-    </form>
+    <div class="form-inline my-2 my-md-0">
+      <input class="form-control" type="text" placeholder="Search" (keyup.enter)="redirectToSearch($event.target.value)">
+    </div>
   </div>
 </nav>
