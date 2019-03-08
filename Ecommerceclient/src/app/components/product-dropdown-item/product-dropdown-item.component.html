@@ -1,0 +1,7 @@
+<li role="menuitem" dropdown triggers="mouseover" placement="right" container="body">
+    <a dropdownToggle class="dropdown-item dropdown-toggle"
+    (click)="false">{{ category.name }}<span class="caret"></span></a>
+    <ul *dropdownMenu class="dropdown-menu" role="menu">
+        <app-product-dropdown-item *ngFor="let cat of category.subCategories" role="menuitem" [category]="cat"></app-product-dropdown-item>
+      </ul>
+</li>
