@@ -14,10 +14,9 @@ export class ProductDropdownItemComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    console.log('prout');
-    
     console.log('\n' + JSON.stringify(this.category) + '\n');
-    
   }
+
+  
 
 }

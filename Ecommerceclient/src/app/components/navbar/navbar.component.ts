@@ -3,6 +3,7 @@ import { ProductService } from 'src/app/services/product.service';
 import { Category } from 'src/app/models/category.model';
 import { CategoryService } from 'src/app/services/category.service';
 import { Router } from '@angular/router';
+import { DataService } from 'src/app/services/data.service';
 
 @Component({
   selector: 'app-navbar',
@@ -15,6 +16,7 @@ export class NavbarComponent implements OnInit {
 
   constructor(
     private categoryService: CategoryService,
+    private dataService: DataService<Category>,
     private router: Router
     ) { }
 
@@ -24,7 +26,17 @@ export class NavbarComponent implements OnInit {
   }
 
   redirectToSearch(query: string): void {
-    this.router.navigateByUrl('products/' + query);
+    this.router.navigateByUrl('search/' + query);
+  }
+
+  public setUrl(url: string): void {
+    console.log(url);
+    
+    this.dataService.setUrl(url);
+  }
+
+  public redirectToProduct(id: number): void {
+    this.router.navigateByUrl('products/' + id);
   }
 
 }

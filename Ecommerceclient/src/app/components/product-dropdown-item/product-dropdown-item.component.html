@@ -3,7 +3,9 @@
       {{ category.name }}
       <span class="caret"></span>
     </a>
-    <ul *dropdownMenu class="dropdown-menu" role="menu">
-        <app-product-dropdown-item *ngFor="let cat of category.subCategories" role="menuitem" [category]="cat"></app-product-dropdown-item>
-    </ul>
+    <ng-container *ngIf="category.subCategories?.length > 0">
+        <ul *dropdownMenu class="dropdown-menu" role="menu">
+            <app-product-dropdown-item *ngFor="let cat of category.subCategories" role="menuitem" [category]="cat"></app-product-dropdown-item>
+        </ul>
+    </ng-container>
 </li>

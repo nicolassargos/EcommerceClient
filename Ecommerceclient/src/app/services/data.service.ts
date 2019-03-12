@@ -3,6 +3,7 @@ import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http
 import { Observable, of } from 'rxjs';
 import { throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
+import { environment } from 'src/environments/environment';
 
 @Injectable()
 export class DataService<T> {
@@ -31,6 +32,12 @@ export class DataService<T> {
         // }
 
         return this.headers;
+    }
+
+    public setUrl(url: string): void {
+        this.url = url + '/';
+        environment.apiBaseUrl = url;
+        console.log(this.url);
     }
 
     public getAll(): Observable<T[]> {

@@ -10,8 +10,8 @@
         <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item active">
-          <a class="nav-link" href="./product/1">Product <span class="sr-only">(current)</span></a>
-        </li>      
+          <a class="nav-link" (click)="redirectToProduct(1)">Product detail 1 <span class="sr-only">(current)</span></a>
+      </li>
       <li class="nav-item dropdown">
           <div class="btn-group" dropdown [autoClose]="false" container="body">
               <button id="button-nested" dropdownToggle type="button" class="btn btn-primary dropdown-toggle"
@@ -24,6 +24,12 @@
           </div>
       </li>
     </ul>
+    <div class="input-group mx-auto col-4">
+        <input class="form-control" type="text" placeholder="set local API address" #apiUrl>
+        <div class="input-group-append">
+          <button class="btn btn-outline-secondary" type="button" id="button-addon2" (click)="setUrl(apiUrl.value)">Setup</button>
+        </div>
+      </div>
     <div class="form-inline my-2 my-md-0">
       <input class="form-control" type="text" placeholder="Search" (keyup.enter)="redirectToSearch($event.target.value)">
     </div>

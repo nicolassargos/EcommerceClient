@@ -34,7 +34,7 @@ import { SearchProductsComponent } from './components/search-products/search-pro
       { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: 'home', component: HomeComponent, data: { title: 'Home' } },
       { path: 'products/:id', component: ProductDetailComponent, data: { title: 'Product detail' } },
-      { path: 'products/:query', component: SearchProductsComponent, data: { title: 'Search a product' } }
+      { path: 'search/:query', component: SearchProductsComponent, data: { title: 'Search a product' } }
     ]),
   ],
   providers: [
