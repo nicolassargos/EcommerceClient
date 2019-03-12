@@ -21,7 +21,14 @@ export class NavbarComponent implements OnInit {
     ) { }
 
   ngOnInit() {
-    this.categories = this.categoryService.getAllCategories();
+    this.categoryService.getAllCategories().subscribe(
+      res => {
+        this.categories = res;
+      },
+      err => {
+
+      }
+    );
     console.log(JSON.stringify(this.categories));
   }
 
@@ -37,6 +44,10 @@ export class NavbarComponent implements OnInit {
 
   public redirectToProduct(id: number): void {
     this.router.navigateByUrl('products/' + id);
+  }
+
+  public redirectToCategories(): void {
+    this.router.navigateByUrl('categories');
   }
 
 }

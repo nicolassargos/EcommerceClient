@@ -14,6 +14,7 @@ import { ProductService } from './services/product.service';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { SearchProductsComponent } from './components/search-products/search-products.component';
+import { CategoriesListingComponent } from './components/categories-listing/categories-listing.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { SearchProductsComponent } from './components/search-products/search-pro
     ProductDetailComponent,
     NavbarComponent,
     ProductDropdownItemComponent,
-    SearchProductsComponent
+    SearchProductsComponent,
+    CategoriesListingComponent
   ],
   imports: [
     CommonModule,
@@ -34,6 +36,7 @@ import { SearchProductsComponent } from './components/search-products/search-pro
       { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: 'home', component: HomeComponent, data: { title: 'Home' } },
       { path: 'products/:id', component: ProductDetailComponent, data: { title: 'Product detail' } },
+      { path: 'categories', component: CategoriesListingComponent, data: { title: 'All Categories' } },
       { path: 'search/:query', component: SearchProductsComponent, data: { title: 'Search a product' } }
     ]),
   ],

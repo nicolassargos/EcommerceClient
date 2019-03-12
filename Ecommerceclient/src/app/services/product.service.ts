@@ -11,8 +11,6 @@ import { environment } from 'src/environments/environment';
 })
 export class ProductService extends DataService<ProductDetail> {
 
-
-
   constructor(protected http: HttpClient) {
     super(http);
     console.log('initialisation de productService: ' + this.url);

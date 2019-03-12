@@ -1,82 +1,24 @@
 import { Injectable } from '@angular/core';
 import { Category } from '../models/category.model';
 import { DataService } from './data.service';
+import { HttpClient } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
-export class CategoryService {
+export class CategoryService extends DataService<Category> {
 
-  constructor(private dataService: DataService<Category>) { }
+  constructor(protected http: HttpClient) {
+    super(http);
+    this.url = environment.apiBaseUrl + '/api/category';
+   }
 
-  public getAllCategories(): Array<Category>{
-    let categories = new Array<Category>();
-    categories = [
-      { 
-        id: 1, 
-        name: 'category1', 
-        subCategories: new Array<Category>(
-        {
-          id: 4, 
-          name: 'category11', 
-          subCategories: new Array<Category>(
-            {
-              id: 8, 
-              name: 'category111', 
-              subCategories: null
-            },
-            {
-              id: 9, 
-              name: 'category112', 
-              subCategories: null
-            }
-          )
-        },
-        {
-          id: 5, 
-          name: 'category11', 
-          subCategories: new Array<Category>(
-            {
-              id: 10, 
-              name: 'category111', 
-              subCategories: null
-            }
-          )
-        },
-        { 
-          id: 2, 
-          name: 'category1', 
-          subCategories: new Array<Category>(
-          {
-            id: 6, 
-            name: 'category11', 
-            subCategories: new Array<Category>(
-              {
-                id: 11, 
-                name: 'category111', 
-                subCategories: null
-              },
-              {
-                id: 12, 
-                name: 'category112', 
-                subCategories: null
-              }
-            )
-          },
-          {
-            id: 7, 
-            name: 'category11', 
-            subCategories: new Array<Category>(
-              {
-                id: 13, 
-                name: 'category111', 
-                subCategories: null
-              }
-            )
-          })
-        }
-        )}
-      ];
-    return categories;
+  public getAllCategories(): Observable<Category[]> {
+    console.log('appel de getAllCategories avec l\'url: ' + this.url);
+    console.log('appel de getAllCategories avec l\'url environnement: ' + environment.apiBaseUrl);
+    this.url = environment.apiBaseUrl + '/api/category';
+    return this.getAll();
   }
 }
