@@ -39,7 +39,7 @@ export class NavbarComponent implements OnInit {
   public setUrl(url: string): void {
     console.log(url);
     
-    this.dataService.setUrl(url);
+    this.dataService.baseUrl = url;
   }
 
   public redirectToProduct(id: number): void {

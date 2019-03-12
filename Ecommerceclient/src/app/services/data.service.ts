@@ -8,8 +8,8 @@ import { environment } from 'src/environments/environment';
 @Injectable()
 export class DataService<T> {
     private token: string;
-    protected url: string;
     protected headers: HttpHeaders;
+    protected url: string;
 
     constructor(protected http: HttpClient) {
     }
@@ -25,20 +25,28 @@ export class DataService<T> {
             // }
 
             // Construction de l'en-tête avec token, commune à tous les appels au serveur.
+            // 'Authorization': 'Bearer ' + this.token,
             this.headers = new HttpHeaders({
-                'Authorization': 'Bearer ' + this.token,
+                
                 'Content-Type': 'application/json'
             });
         // }
 
         return this.headers;
     }
-
-    public setUrl(url: string): void {
-        this.url = url + '/';
-        environment.apiBaseUrl = url;
-        console.log(this.url);
+    
+    // Get & Set Url
+    get baseUrl(): string 
+    {
+        return localStorage.getItem('baseUrl').toString();
     }
+    set baseUrl(baseUrl: string)
+    {
+        if (!baseUrl.endsWith('/')) baseUrl = baseUrl + '/';
+        localStorage.setItem('baseUrl', baseUrl);
+    }
+
+
 
     public getAll(): Observable<T[]> {
         console.log('URL d appel: ' + this.url);

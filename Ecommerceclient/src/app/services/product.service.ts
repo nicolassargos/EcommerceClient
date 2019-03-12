@@ -13,14 +13,14 @@ export class ProductService extends DataService<ProductDetail> {
 
   constructor(protected http: HttpClient) {
     super(http);
-    console.log('initialisation de productService: ' + this.url);
-    this.url = environment.apiBaseUrl + '/api/product';
+    console.log('initialisation de productService: ' + this.baseUrl);
+    this.url = this.baseUrl + '/api/product';
     console.log('initialisation de productService pour url: ' + this.url);
    }
 
   public getProductById(id: number): Observable<ProductDetail> {
-    console.log('appel de Getproduct depuis ProductService avec Url: ' + this.url)
-    const url =  this.url + '/' + id;
+    this.url = this.baseUrl + '/api/product';
+    console.log('appel de Getproduct depuis ProductService avec Url: ' + this.url);
     return this.getById(id);
   }
 
