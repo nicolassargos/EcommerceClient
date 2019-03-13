@@ -1,0 +1,11 @@
+<div id={{widget.id}} [ngStyle]="{'background-color': widget.color, 'cursor': 'pointer'}" class="card" (click)="onClick()">
+  <div class="card-body">
+    <fa name={{widget.iconName}}></fa>
+    <h3 class="card-title">{{widget.title}}</h3>
+    <h6 class="card-subtitle mb-2">{{widget.subtitle}}</h6>
+  </div>
+  <div class="card-footer text-center">
+    <span style="margin: 10px">{{widget.footer}}</span>
+    <fa name="arrow-right" size="1x"></fa>
+  </div>
+</div>

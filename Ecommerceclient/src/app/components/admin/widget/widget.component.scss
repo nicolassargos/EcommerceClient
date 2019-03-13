@@ -1,0 +1,25 @@
+@import "./../../../styles/mixins.scss";
+
+.card {
+    min-width: 300px !important;
+    border-radius: 0;
+}
+
+.card-body > fa {
+    @include absolute(top -1.5rem right 1rem);
+    font-size: 6rem !important;
+    @include opacity(0.18);
+}
+
+.card-title {
+    color: white;
+}
+
+.card-subtitle {
+    color: white;
+    @include opacity(0.75);
+}
+
+.card-footer {
+    color: white;
+}

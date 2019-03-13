@@ -7,10 +7,10 @@
   <div class="collapse navbar-collapse" id="navbarsExample05">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-          <a class="nav-link" (click)="redirectToProduct(1)">Product detail 1 <span class="sr-only">(current)</span></a>
+          <a class="nav-link" routerLink="/product/1">Product detail 1 <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item active">
-          <a class="nav-link" (click)="redirectToCategories()">Categories <span class="sr-only">(current)</span></a>
+          <a class="nav-link" routerLink="/category">Categories <span class="sr-only">(current)</span></a>
       </li>      
       <li class="nav-item dropdown">
           <div class="btn-group" dropdown [autoClose]="false" container="body">
@@ -22,6 +22,9 @@
                   <app-product-dropdown-item *ngFor="let cat of categories" role="menuitem" [category]="cat"></app-product-dropdown-item>
               </ul>
           </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/admin">Admin panel</a>
       </li>
     </ul>
     <div class="input-group mx-auto col-4">

@@ -1,0 +1,3 @@
+<div *ngFor="let widget of widgets" style="min-width:350px; margin: 25px;" class="nr-widget">
+  <app-widget [widget]="widget" (click)="onClick(widget.id)"></app-widget>
+</div>

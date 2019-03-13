@@ -1,0 +1,39 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark" id="mainNav">
+  <!-- TODO: Insérer un lien de retour vers la page d'accueil -->
+  <a class="navbar-brand" routerLink="/product/monitoring">
+    <!-- <img src="{{ logoSource }}"> -->
+  </a>
+  <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+    aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse">
+    <ul class="navbar-nav navbar-sidenav">
+      <li class="nav-item" *ngFor="let section of sectionList">
+        <a class="nav-link" (click)="sectionSelected = section.id">
+          <fa name={{section.iconName}}></fa>
+          <span style="margin-left: 15px;">{{section.subtitle}}</span>
+        </a>
+      </li>
+    </ul>
+    <ul class="navbar-nav sidenav-toggler">
+      <li class="nav-item">
+        <a class="nav-link text-center" routerLink="/home" >Back</a>
+      </li>
+    </ul>
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item" style="color: white">Welcome Admin</li>
+    </ul>
+  </div>
+</nav>
+
+
+<div class="content-wrapper">
+  <div class="row" [ngSwitch]="sectionSelected">
+    <app-dashboard *ngSwitchCase="'dashboard'" [widgets]=sectionList (change)="onWidgetClicked($event)"></app-dashboard>
+    <!-- <app-manage-users *ngSwitchCase="'widgetUsers'" style="width: 100%"></app-manage-users> -->
+    <!-- <app-manage-categories *ngSwitchCase="'widgetCategories'" style="width: 100%"></app-manage-categories> -->
+    <app-manage-products *ngSwitchCase="'widgetProducts'" style="width: 100%"></app-manage-products>
+    <!-- <app-manage-orders *ngSwitchCase="'widgetOrders'" style="width: 100%"></app-manage-orders> -->
+  </div>
+</div>

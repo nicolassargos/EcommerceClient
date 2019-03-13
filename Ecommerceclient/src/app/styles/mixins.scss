@@ -1,0 +1,119 @@
+// Dimension: dimensionne un élément
+// Ex: @include dimension (20px, 15px)
+@mixin dimension($width, $height: $width) {
+    width: $width;
+    height: $height;
+  }
+
+
+// Box-shadow: créé une ombre, par défaut noire et externe
+// Ex: @include box-shadow (0,0,2px,0, #AA55EE, true)
+@mixin box-shadow($top: 0, $left: 0, $blur: 0, $spread: 0, $color: black, $inset: false) {
+    @if $top == none {
+        -webkit-box-shadow: none;
+        -moz-box-shadow: none;
+        box-shadow: none;  
+    }
+    @if $inset {
+      -webkit-box-shadow:inset $top $left $blur $spread $color;
+      -moz-box-shadow:inset $top $left $blur $spread $color;
+      box-shadow:inset $top $left $blur $spread $color;
+    } @else {
+      -webkit-box-shadow: $top $left $blur $spread $color;
+      -moz-box-shadow: $top $left $blur $spread $color;
+      box-shadow: $top $left $blur $spread $color;
+    }
+  }
+
+
+// Opacity: prend en argument la valeur et (optionnel) !important
+// Ex: @include opacity (0.2, !important)
+@mixin opacity($value, $optionnal: null){
+    $IEValue: $value*100;
+    opacity: $value $optionnal;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity="+$IEValue+")";
+    filter: alpha(opacity=$IEValue);
+  }
+
+
+// Transition: prend en argument une liste d'arguments
+// Ex: @include transition (transform .3s ease-out .1s)
+@mixin transition($transitions...){
+    transition: $transitions;
+    -webkit-transition: $transitions;
+    -moz-transition: $transitions;
+    -ms-transition: $transitions;
+    -o-transition: $transitions;
+    }
+
+
+// Transform: prend en argument une liste d'arguments
+// Ex: @include transform (translateY(40px)
+@mixin transform($transforms) {
+    -moz-transform: $transforms;
+    -o-transform: $transforms;
+    -ms-transform: $transforms;
+    -webkit-transform: $transforms;
+    transform: $transforms;
+  }
+
+// Appearance: prend en argument une liste d'arguments
+// Ex: @include appearance (none)
+@mixin appearance($appearances...){
+    appearance: $appearances;
+    -moz-appearance: $appearances;
+    -webkit-appearance: $appearances;
+}
+
+// Position: définit le type de positionnement et le décalage par rapport à la valeur par défaut
+// Ex: @include position (absolute, top 100% left 0);
+@mixin position($position, $args) {
+    @each $o in top right bottom left {
+      $i: index($args, $o);
+      @if $i and $i + 1 <= length($args) and type-of(nth($args, $i + 1)) == number {
+        #{$o}: nth($args, $i + 1);
+      }
+    }
+    position: $position;
+  }
+  
+// Positioning helpers (cf: mixin position)
+// Ex: @include absolute(left 50px bottom 15%)
+@mixin absolute($args: '') {
+    @include position(absolute, $args);
+}
+
+@mixin fixed($args: '') {
+    @include position(fixed, $args);
+}
+
+@mixin relative($args: '') {
+    @include position(relative, $args);
+}
+
+
+// "Disable" an element
+@mixin disable()
+{
+  pointer-events: none;
+  cursor: default;
+}
+
+@mixin underline($color: #eee, $color-hover: #999)
+{
+  border: none;
+  box-shadow: none;
+  border-bottom: 1px $color solid;
+  @include box-shadow(0, 0, 0, 0, transparent);
+  @include transition(all 0.2s);
+  
+  &:hover {
+    border-bottom: 1px $color-hover solid;
+  }
+
+  &:active, &:focus {
+    border-bottom-color: transparent;
+    @include box-shadow(0, 3px, 0, 0, $color-hover);
+  }
+}
+
