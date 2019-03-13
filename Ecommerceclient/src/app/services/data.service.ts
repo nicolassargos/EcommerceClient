@@ -38,7 +38,7 @@ export class DataService<T> {
     // Get & Set Url
     get baseUrl(): string 
     {
-        return localStorage.getItem('baseUrl').toString();
+        return localStorage.getItem('baseUrl');
     }
     set baseUrl(baseUrl: string)
     {
