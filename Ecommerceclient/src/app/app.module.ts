@@ -21,6 +21,7 @@ import { WidgetComponent } from './components/admin/widget/widget.component';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { ManageProductsComponent } from './components/admin/manage-products/manage-products.component';
 import { DashboardComponent } from './components/admin/dashboard/dashboard.component';
+import { CategoryProductsComponent } from './components/category-products/category-products.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { DashboardComponent } from './components/admin/dashboard/dashboard.compo
     AdminPanelComponent,
     WidgetComponent,
     ManageProductsComponent,
-    DashboardComponent
+    DashboardComponent,
+    CategoryProductsComponent
   ],
   imports: [
     CommonModule,
@@ -48,7 +50,7 @@ import { DashboardComponent } from './components/admin/dashboard/dashboard.compo
       { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: 'home', component: HomeComponent, data: { title: 'Home' } },
       { path: 'products/:id', component: ProductDetailComponent, data: { title: 'Product detail' } },
-      { path: 'categories', component: CategoriesListingComponent, data: { title: 'All Categories' } },
+      { path: 'products/category/:id', component: CategoryProductsComponent, data: { title: 'Products by category' } },
       { path: 'search/:query', component: SearchProductsComponent, data: { title: 'Search a product' } },
       { path: 'admin', component: AdminPanelComponent, data: { title: 'Admin - Dashboard' } }
     ]),

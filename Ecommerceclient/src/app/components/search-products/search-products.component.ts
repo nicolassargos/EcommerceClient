@@ -18,7 +18,7 @@ export class SearchProductsComponent implements OnInit {
   ngOnInit() {
     this.query = this.route.snapshot.paramMap.get('query');
 
-    this.productService.getById
+    // this.productService.getById
   }
 
 }

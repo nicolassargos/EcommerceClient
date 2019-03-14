@@ -12,12 +12,18 @@ export class CategoryService extends DataService<Category> {
 
   constructor(protected http: HttpClient) {
     super(http);
-    this.url = this.baseUrl + '/api/category';
+    this.url = this.baseUrl + 'api/category';
    }
 
   public getAllCategories(): Observable<Category[]> {
     console.log('appel de getAllCategories avec l\'url: ' + this.url);
-    this.url = this.baseUrl + '/api/category/all';
+    this.url = this.baseUrl + 'api/category/all';
+    return this.getAll();
+  }
+
+  public getAllHierarchicalCategories(): Observable<Category[]> {
+    console.log('appel de getAllCategories avec l\'url: ' + this.url);
+    this.url = this.baseUrl + 'api/category';
     return this.getAll();
   }
 }
