@@ -24,9 +24,9 @@ export class ProductService extends DataService<ProductDetail> {
     return this.getById(id);
   }
 
-  public getproduct(id: number) { 
-    // : Observable<ProductDetail> {
-    // return this.dataService.getById(this.url);
+  public getAllProducts() { 
+    this.url = this.baseUrl + '/api/product/all';
+    return this.getAll();
   }
-
+  
 }

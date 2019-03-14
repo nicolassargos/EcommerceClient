@@ -17,7 +17,7 @@ export class CategoryService extends DataService<Category> {
 
   public getAllCategories(): Observable<Category[]> {
     console.log('appel de getAllCategories avec l\'url: ' + this.url);
-    this.url = this.baseUrl + '/api/category';
+    this.url = this.baseUrl + '/api/category/all';
     return this.getAll();
   }
 }

@@ -1,0 +1,13 @@
+.admin-option-btn {
+    min-width: 100%; 
+    padding: 3rem 1.5rem; 
+    color: white;
+}
+
+.admin-option-btn:hover {
+    background-color: #aaa;
+}
+
+.admin-option-btn.active {
+    background-color: #888;
+}
