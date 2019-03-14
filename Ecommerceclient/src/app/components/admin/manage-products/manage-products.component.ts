@@ -25,15 +25,7 @@ export class ManageProductsComponent implements OnInit {
     // Affiche tous les produits par défaut
     this.mode = 'all';
     this.newProduct = new ProductDetail();
-    
-    // Récupère tous les produits depuis l'API
-    this.service.getAllProducts().subscribe(
-      res => {
-        this.products = res;
-        console.log(JSON.stringify(this.products));
-      },
-      err => {}
-    )
+    this.getAllProducts();
 
     this.categoryService.getAllCategories().subscribe(
       res => {
@@ -44,10 +36,11 @@ export class ManageProductsComponent implements OnInit {
   }
 
   public AddProduct() {
-    this.service.create(this.newProduct).subscribe(
+    this.service.createProduct(this.newProduct).subscribe(
       res => {
         this.newProduct = new ProductDetail();
         this.mode = 'all';
+        this.getAllProducts();
       },
       err => {
         console.log('erreur lors de l\'enregistrement: ' + err.message);
@@ -55,6 +48,14 @@ export class ManageProductsComponent implements OnInit {
     )
   }
 
-  
-
+  public getAllProducts() {
+    // Récupère tous les produits depuis l'API
+    this.service.getAllProducts().subscribe(
+      res => {
+        this.products = res;
+        console.log(JSON.stringify(this.products));
+      },
+      err => {}
+    )
+  }
 }
