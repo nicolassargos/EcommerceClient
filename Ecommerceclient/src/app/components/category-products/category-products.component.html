@@ -1,26 +1,29 @@
 <app-navbar></app-navbar>
-
-<div *ngFor="let product of products">
-  <div class="row no-gutters flex-md-row mb-4 h-md-250 position-relative">
-    <div class="col-6 p-4 d-flex flex-column position-static shadow-sm border rounded">
-      <strong class="d-inline-block mb-2 text-primary">{{ product?.category }}</strong>
-      <h3 class="mb-0">{{ product?.name }}</h3>
-      <div class="mb-1 text-muted">{{ product?.publicationDate | date:"dd/MM/yy" }}</div>
-      <p class="card-text mb-auto">{{ product?.description }}</p>
-      <div class="row">
-        <div class="col-9">
-            <h3 class="mb-0">{{ product?.price }} €</h3>
+<div class="container mt-5">
+  <div class="row">
+  <div *ngFor="let product of products" class="col-6">
+      <div class="row no-gutters flex-md-row mb-4 h-md-250 position-relative">
+          <div class="col p-4 d-flex flex-column position-static shadow-sm border rounded">
+            <strong class="d-inline-block mb-2 text-primary">{{ product?.category }}</strong>
+            <h3 class="mb-0">{{ product?.name }}</h3>
+            <div class="mb-1 text-muted">{{ product?.publicationDate | date:"dd/MM/yy" }}</div>
+            <p class="card-text mb-auto">{{ product?.description }}</p>
+            <div class="row">
+              <div class="col">
+                  <h3 class="mb-0">{{ product?.price }} €</h3>
+              </div>
+              <div class="col-auto">
+                <button type="button" class="btn btn-outline-primary" (click)="addToCart(product, 2)">Add to my cart</button>
+              </div>
+            </div>
+          </div>
+          <div class="col-auto d-none d-lg-block">
+            <svg class="bd-placeholder-img" width="200" height="250" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail">
+              <title>Placeholder</title>
+              <rect width="100%" height="100%" fill="#55595c"></rect>
+              <text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
+          </div>
         </div>
-        <div class="col-3">
-            <a href="#">Buy it!</a>
-        </div>
-      </div>
-    </div>
-    <div class="col-auto d-none d-lg-block">
-      <svg class="bd-placeholder-img" width="200" height="250" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail">
-        <title>Placeholder</title>
-        <rect width="100%" height="100%" fill="#55595c"></rect>
-        <text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-    </div>
+  </div>
 </div>
 </div>

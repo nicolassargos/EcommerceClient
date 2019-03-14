@@ -1,3 +1,4 @@
+import { ShoppingCartService } from './../../services/shopping-cart.service';
 import { Component, OnInit, Input, OnChanges } from '@angular/core';
 import { ProductService } from 'src/app/services/product.service';
 import { ProductDetail } from 'src/app/models/product-detail.model';
@@ -8,7 +9,7 @@ import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
   templateUrl: './category-products.component.html',
   styleUrls: ['./category-products.component.scss']
 })
-export class CategoryProductsComponent implements OnInit, OnChanges {
+export class CategoryProductsComponent implements OnInit {
 
   navigationSubscription;
 
@@ -17,6 +18,7 @@ export class CategoryProductsComponent implements OnInit, OnChanges {
 
   constructor(private service: ProductService,
     private route: ActivatedRoute,
+    private shoppingCartService: ShoppingCartService,
     private router: Router) 
     {
       this.navigationSubscription = this.router.events.subscribe(
@@ -32,9 +34,6 @@ export class CategoryProductsComponent implements OnInit, OnChanges {
 
   }
 
-  ngOnChanges() {
-    
-  }
 
   public initialisationCategoryProducts() {
     this.categoryId = +this.route.snapshot.paramMap.get('id');
@@ -50,5 +49,8 @@ export class CategoryProductsComponent implements OnInit, OnChanges {
     );
   }
 
+  public addToCart(product: ProductDetail, quantity: number): void {
 
+    this.shoppingCartService.addProductToShoppingCart(product, quantity)
+  }
 }

@@ -1,3 +1,4 @@
+import { ShoppingCartService } from './../../services/shopping-cart.service';
 import { Component, OnInit } from '@angular/core';
 import { ProductService } from 'src/app/services/product.service';
 import { Category } from 'src/app/models/category.model';
@@ -16,6 +17,7 @@ export class NavbarComponent implements OnInit {
 
   constructor(
     private categoryService: CategoryService,
+    private shoppingCartService: ShoppingCartService,
     private dataService: DataService<Category>,
     private router: Router
     ) { }
@@ -48,6 +50,14 @@ export class NavbarComponent implements OnInit {
 
   public redirectToCategories(): void {
     this.router.navigateByUrl('categories');
+  }
+
+  public login(): void {
+    this.shoppingCartService.createShoppingCart();
+  }
+
+  public saveShoppingCart(): void {
+    this.shoppingCartService.validateShoppingCart();
   }
 
 }
